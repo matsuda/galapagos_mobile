@@ -12,11 +12,6 @@ jpmobileプラグインを使用した場合に発生する不具合を解消す
 
 ## install
 
-### Rails pluginとしてインストール  
-
-    $ rails plugin install git://github.com/matsuda/galapagos_mobile.git
-
-
 ### gemとしてインストール
 
 Gemfileに以下を記述
@@ -26,6 +21,20 @@ Gemfileに以下を記述
 bundle
 
     $ bundle
+
+setupメソッドを実行
+例えば config/initializers/galapagos_mobile.rb を作って
+
+    GalapagosMobile.setup
+
+と記述する
+
+### Rails pluginとしてインストール
+
+（setupメソッドは不要）
+
+    $ rails plugin install git://github.com/matsuda/galapagos_mobile.git
+
 
 ## 実装されている機能
 
