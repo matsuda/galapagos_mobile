@@ -4,7 +4,7 @@ require "galapagos_mobile/version"
 
 Gem::Specification.new do |s|
   s.name        = "galapagos_mobile"
-  s.version     = GalapagosMobile::VERSION
+  s.version     = GalapagosMobile::VERSION.dup
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kosuke Matsuda"]
   s.email       = ["hi@matsuda.me"]
@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.date = %q{2011-02-17}
+  s.add_dependency("jpmobile", ">= 0.1.4")
 end
