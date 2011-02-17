@@ -20,5 +20,4 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.date = %q{2011-02-17}
-  s.add_dependency("jpmobile", ">= 0.1.4")
 end
