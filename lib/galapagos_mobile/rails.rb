@@ -9,3 +9,7 @@ end
 ActiveSupport.on_load(:action_controller) do
   require 'galapagos_mobile/trans_sid'
 end
+
+if defined?(Devise)
+  require 'galapagos_mobile/devise'
+end
