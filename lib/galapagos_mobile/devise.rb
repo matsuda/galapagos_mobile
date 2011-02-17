@@ -70,10 +70,9 @@ module ActionDispatch::Routing
     # need devise_for mappings already declared to create filters and helpers.
     def finalize_with_galapagos_mobile!
       finalize_without_galapagos_mobile!
+      ::Devise::FailureApp.send :include, GalapagosMobile::Devise::FailureApp
       ActionController::Base.send :include, GalapagosMobile::Devise::Controllers::Helpers
     end
     alias_method_chain :finalize!, :galapagos_mobile
   end
 end
-
-::Devise::FailureApp.send :include, GalapagosMobile::Devise::FailureApp
