@@ -55,7 +55,7 @@ module GalapagosMobile
             sign_in(scope, resource) unless warden.user(scope) == resource
             redirect_url = stored_location_for(scope) || after_sign_in_path_for(resource)
             # 古いsession_idが付いているとjpmobileが新しいsession_idを付与しないので、強制的に古いsession_idをクリアする
-            redirect_url.gsub!(/#{session_key}=[^&]*&?/, '') if respond_to?(:session_key)
+            redirect_url.gsub!(/#{session_key}=[^&]*&?/, '') if respond_to?(:session_key, true)
             redirect_to redirect_url
           end
         end
