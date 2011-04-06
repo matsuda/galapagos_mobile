@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 begin
   require 'jpmobile'
 rescue LoadError, NameError => e
@@ -7,6 +8,7 @@ rescue LoadError, NameError => e
 end
 
 ActiveSupport.on_load(:action_controller) do
+  require 'galapagos_mobile/request'
   require 'galapagos_mobile/trans_sid'
 end
 

@@ -9,7 +9,7 @@
 # end
 # 
 # resources
-#   from jpmobile/trans_sid.rb -v 0.1.4
+#   from jpmobile/trans_sid.rb -v 1.0.0.pre
 #   from devise/failure_app.rb -v 0.1.8
 # 
 module GalapagosMobile
