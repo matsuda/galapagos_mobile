@@ -12,4 +12,5 @@ end
 
 if defined?(Devise)
   require 'galapagos_mobile/devise'
+  require 'galapagos_mobile/failure_app'
 end

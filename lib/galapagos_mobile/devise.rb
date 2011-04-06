@@ -2,44 +2,6 @@
 # monkey patching for jpmobile 0.1.4 + devise 1.1.6
 module GalapagosMobile
   module Devise
-    module FailureApp
-      extend ActiveSupport::Concern
-
-      included do
-        class_inheritable_accessor :trans_sid_mode
-        # Set trans_sid_mode if you want to use others.
-        # ex. ::Devise::FailureApp.trans_sid_mode = :always
-        #     in config/initializers/galapagos_mobile.rb
-        self.trans_sid_mode = :mobile
-      end
-
-      module InstanceMethods
-        # from jpmobile/trans_sid.rb -v 0.1.4
-        protected
-        # URLにsession_idを追加する。
-        def default_url_options
-          result = super || {}
-          return result unless request # for test process
-          return result unless apply_trans_sid?
-          return result.merge({session_key => jpmobile_session_id})
-        end
-
-        private
-        # session_keyを返す。
-        def session_key
-          unless key = Rails.application.config.session_options.merge(request.session_options || {})[:key]
-            key = ActionDispatch::Session::AbstractStore::DEFAULT_OPTIONS[:key]
-          end
-          key
-        end
-
-        # session_idを返す
-        def jpmobile_session_id
-          request.session_options[:id] rescue session.session_id
-        end
-      end
-    end
-
     module Controllers
       module Helpers
         extend ActiveSupport::Concern
@@ -70,7 +32,6 @@ module ActionDispatch::Routing
     # need devise_for mappings already declared to create filters and helpers.
     def finalize_with_galapagos_mobile!
       finalize_without_galapagos_mobile!
-      ::Devise::FailureApp.send :include, GalapagosMobile::Devise::FailureApp
       ActionController::Base.send :include, GalapagosMobile::Devise::Controllers::Helpers
     end
     alias_method_chain :finalize!, :galapagos_mobile
